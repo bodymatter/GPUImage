@@ -85,6 +85,15 @@ extern NSString *const kGPUImageYUVVideoRangeConversionForLAFragmentShaderString
  */
 - (id)initWithSessionPreset:(NSString *)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition;
 
+/** Begin a capture session
+
+ See AVCaptureSession for acceptable values
+
+ @param sessionPreset Session preset to use
+ @param captureDevice Camera to capture from
+ */
+- (id)initWithSessionPreset:(NSString *)sessionPreset captureDevice:(AVCaptureDevice *) captureDevice;
+
 /** Add audio capture to the session. Adding inputs and outputs freezes the capture session momentarily, so you
     can use this method to add the audio inputs and outputs early, if you're going to set the audioEncodingTarget 
     later. Returns YES is the audio inputs and outputs were added, or NO if they had already been added.

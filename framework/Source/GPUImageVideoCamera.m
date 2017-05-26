@@ -142,13 +142,34 @@ NSString *const kGPUImageYUVVideoRangeConversionForLAFragmentShaderString = SHAD
     return self;
 }
 
-- (id)initWithSessionPreset:(NSString *)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition; 
+- (id)initWithSessionPreset:(NSString *)sessionPreset cameraPosition:(AVCaptureDevicePosition)cameraPosition;
 {
-	if (!(self = [super init]))
+    AVCaptureDevice* selectedCamera = nil;
+
+    // Grab the back-facing or front-facing camera
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices)
     {
-		return nil;
+        if ([device position] == cameraPosition)
+        {
+            selectedCamera = device;
+        }
     }
-    
+
+    if (!selectedCamera) {
+        return nil;
+    }
+
+    return [self initWithSessionPreset: sessionPreset captureDevice: selectedCamera];
+}
+
+- (id)initWithSessionPreset:(NSString *)sessionPreset captureDevice:(AVCaptureDevice *) captureDevice;
+{
+    if (!(self = [super init]))
+    {
+        return nil;
+    }
+
     cameraProcessingQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0);
 	audioProcessingQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW,0);
 
@@ -162,22 +183,9 @@ NSString *const kGPUImageYUVVideoRangeConversionForLAFragmentShaderString = SHAD
     captureAsYUV = YES;
     _preferredConversion = kColorConversion709;
     
-	// Grab the back-facing or front-facing camera
-    _inputCamera = nil;
-	NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-	for (AVCaptureDevice *device in devices) 
-	{
-		if ([device position] == cameraPosition)
-		{
-			_inputCamera = device;
-		}
-	}
-    
-    if (!_inputCamera) {
-        return nil;
-    }
-    
-	// Create the capture session
+    _inputCamera = captureDevice;
+
+    // Create the capture session
 	_captureSession = [[AVCaptureSession alloc] init];
 	
     [_captureSession beginConfiguration];
