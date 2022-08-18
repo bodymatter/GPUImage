@@ -1,4 +1,6 @@
+#if !TARGET_OS_IOS
 #import <Cocoa/Cocoa.h>
+#endif
 #import "GPUImageOutput.h"
 
 @interface GPUImagePicture : GPUImageOutput
