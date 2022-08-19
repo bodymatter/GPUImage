@@ -1,4 +1,4 @@
-#import "GPUImagePicture.h"
+#import "include/GPUImage/GPUImagePicture.h"
 
 @implementation GPUImagePicture
 

@@ -25,12 +25,14 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(name: "GPUImage-iOS",
                 dependencies: [],
-                exclude: []),
-        .target(name: "GPUImage",
-                dependencies: [],
-                exclude: []),
-//        .testTarget(
-//            name: "GPUImageTests",
-//            dependencies: ["GPUImage"]),
+                publicHeadersPath: "include",
+                cSettings: [
+                    .headerSearchPath("."),
+                ]),
+//        .target(name: "GPUImage",
+//                dependencies: ["GPUImage-iOS"]),
+        .testTarget(
+            name: "GPUImageTests",
+            dependencies: ["GPUImage-iOS"]),
     ]
 )

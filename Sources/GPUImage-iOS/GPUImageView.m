@@ -1,8 +1,8 @@
-#import "GPUImageView.h"
+#import "include/GPUImage/GPUImageView.h"
 #import <OpenGLES/EAGLDrawable.h>
 #import <QuartzCore/QuartzCore.h>
-#import "GPUImageContext.h"
-#import "GPUImageFilter.h"
+#import "include/GPUImage/GPUImageContext.h"
+#import "include/GPUImage/GPUImageFilter.h"
 #import <AVFoundation/AVFoundation.h>
 
 #pragma mark -

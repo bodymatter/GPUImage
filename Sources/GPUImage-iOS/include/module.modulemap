@@ -1,0 +1,5 @@
+module GPUImage {
+  header "GPUImage/GPUImageFramework.h"
+
+  export *
+}

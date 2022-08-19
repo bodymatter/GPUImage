@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Brad Larson. All rights reserved.
 //
 
-#import "GPUImagePicture+TextureSubimage.h"
+#import "include/GPUImage/GPUImagePicture+TextureSubimage.h"
 
 @implementation GPUImagePicture (TextureSubimage)
 

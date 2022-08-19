@@ -1,4 +1,4 @@
-#import "GPUImageContext.h"
+#import "include/GPUImage/GPUImageContext.h"
 #import <OpenGLES/EAGLDrawable.h>
 #import <AVFoundation/AVFoundation.h>
 
