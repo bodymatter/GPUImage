@@ -1,4 +1,0 @@
-Target dependency graph (3 targets)
-Documentation in GPUImage, no dependencies
-GPUImage in GPUImage, no dependencies
-GPUImageFramework in GPUImage, no dependencies
