@@ -26,6 +26,9 @@ let package = Package(
         .target(name: "GPUImage-iOS",
                 dependencies: [],
                 exclude: []),
+        .target(name: "GPUImage",
+                dependencies: [],
+                exclude: []),
 //        .testTarget(
 //            name: "GPUImageTests",
 //            dependencies: ["GPUImage"]),
